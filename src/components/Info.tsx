@@ -46,6 +46,16 @@ export const Info = ({ label2, label1, phone: phoneLabel, link }: InfoType) => {
           <img src={navi} />
           <span>Zobacz jak dojechac</span>
         </Button>
+        <Button
+          onClick={() => {
+            const el = document.getElementById("asortyment");
+            console.log(el);
+            el?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }}
+        >
+          <img src={arrowDown} />
+          <span>Zobacz asortyment</span>
+        </Button>
         <Attention />
         <div className="flex flex-row w-full  gap-4">
           <Button variant="outline" onClick={() => window.open(`tel:${phone}`)}>
@@ -61,16 +71,6 @@ export const Info = ({ label2, label1, phone: phoneLabel, link }: InfoType) => {
             <img src={copy} />
           </Button>
         </div>
-        <Button
-          onClick={() => {
-            const el = document.getElementById("asortyment");
-            console.log(el);
-            el?.scrollIntoView({ behavior: "smooth", block: "center" });
-          }}
-        >
-          <img src={arrowDown} />
-          <span>Zobacz asortyment</span>
-        </Button>
       </div>
     </div>
   );

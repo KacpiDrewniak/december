@@ -35,6 +35,7 @@ const Badge = ({ label, onClick }: BadgeType) => {
 
 const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <Modal isOpen={modalIsOpen} style={customStyles}>
@@ -65,8 +66,8 @@ const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
               {productCard.map((p) => (
                 <div
                   key={p.id}
-                  className={`p-2 basis-[140px] flex-col items-center bg-${
-                    isPromoted ? "green-100" : "typography300"
+                  className={`p-2 w-[45%] flex-col items-center ${
+                    isPromoted ? "bg-green-100" : "bg-typography300"
                   } rounded-lg`}
                 >
                   <div className="s1 text-center text-typography900">
@@ -83,8 +84,8 @@ const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
       </Modal>
       <button
         onClick={() => setIsOpen(true)}
-        className={` hover:shadow-lg transition p-3 border rounded-xl border-${
-          isPromoted ? "green-400" : "typography400"
+        className={` hover:shadow-lg transition p-3 border rounded-xl ${
+          isPromoted ? "border-green-400" : "border-typography400"
         } flex flex-col`}
       >
         <div className="flex gap-3 items-center">
@@ -98,16 +99,16 @@ const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
           </button>
         </div>
         <hr
-          className={`my-2 h-[2px] bg-${
-            isPromoted ? "green-400" : "typography400"
+          className={`my-2 h-[2px] ${
+            isPromoted ? "bg-green-400" : "bg-typography400"
           }`}
         />
         <div className="flex flex-row flex-wrap gap-2 justify-between">
           {productCard.map((p) => (
             <div
               key={p.id}
-              className={`p-2 basis-[140px] flex-col items-center bg-${
-                isPromoted ? "green-100" : "typography300"
+              className={`p-2 w-[45%] flex-col items-center ${
+                isPromoted ? "bg-green-100" : "bg-typography300"
               } rounded-lg`}
             >
               <div className="s1 text-center text-typography900">{p.price}</div>
@@ -171,7 +172,7 @@ export const Asortiment = ({ data }: { data: Section[] }) => {
             el?.scrollIntoView({ behavior: "smooth", block: "center" });
           }}
           style={{ padding: 0 }}
-          classNames="!w-12 !h-12 fixed bottom-2 right-2"
+          classNames="!w-12 !h-12 fixed bottom-2 right-2 border-white border"
         >
           <img src={arrowUp} />
         </Button>
@@ -207,7 +208,7 @@ export const Asortiment = ({ data }: { data: Section[] }) => {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="max-w-[320px] w-full">
+        <div className="px-10 max-w-[400px] w-full">
           {data.map(({ title, product, id }) => {
             return (
               <section className="flex flex-col gap-4 py-4" id={title} key={id}>
