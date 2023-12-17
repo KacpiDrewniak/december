@@ -5,19 +5,27 @@ export const actionGetData = async () =>
     "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clpbwytih8hel01t60huph7mg/master",
     `
                   {
-                   sections {
-                        id
-                        title
-                        product {
-                          ... on Product {
+                    sections {
+                      id
+                      title
+                      product {
+                        ... on Product {
+                          id
+                          title
+                          image {
                             id
-                            paleta
-                            one_opak
-                            one_kg_szt
-                            title
-                            ten_opak
+                            url
+                          }
+                          isPromoted
+                          productCard {
+                            ... on Card {
+                              id
+                              title
+                              price
+                            }
                           }
                         }
                       }
+                    }
                 } `,
   );
