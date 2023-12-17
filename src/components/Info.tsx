@@ -36,6 +36,7 @@ export const Info = () => {
             <span>123 456 789</span>
           </Button>
           <Button
+            style={{ padding: 0 }}
             classNames="max-w-[48px] min-w-[48px] h-[48px] px-0 py-0"
             variant="outline"
           >
