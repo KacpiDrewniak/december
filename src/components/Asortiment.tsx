@@ -59,7 +59,7 @@ const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
               <img src={arrowLeft} />
             </Button>
           </div>
-          <div className="flex flex-col px-9 py-3 ">
+          <div className="flex flex-col px-9 py-3">
             <h5 className="h5">{title}</h5>
             <hr className="bg-typography400 my-2" />
             <div className="flex flex-row flex-wrap gap-2 justify-between ">
@@ -84,7 +84,7 @@ const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
       </Modal>
       <button
         onClick={() => setIsOpen(true)}
-        className={` hover:shadow-lg transition p-3 border rounded-xl ${
+        className={`hover:shadow-lg transition p-3 border rounded-xl ${
           isPromoted ? "border-green-400" : "border-typography400"
         } flex flex-col`}
       >
