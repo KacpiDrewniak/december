@@ -1,7 +1,13 @@
 import React from "react";
 import infoWhite from "./../assets/infoWhite.svg";
 
-export const ShopInfo = () => {
+type ShopInfoType = {
+  text?: string;
+  text2?: string;
+  text3?: string;
+};
+
+export const ShopInfo = ({ text, text3, text2 }: ShopInfoType) => {
   return (
     <div className="px-[36px] py-[32px] bg-typography300 flex flex-col items-center">
       <div className="flex flex-col gap-4 items-center  max-w-[320px] ">
@@ -21,11 +27,11 @@ export const ShopInfo = () => {
         <div className="flex flex-col gap-2 items-center">
           <div className="h5 text-center">Godziny otwarcia</div>
           <div className="p2">Poniedziałek - Piatek</div>
-          <div className="s1">2:00 - 12:00</div>
+          <div className="s1">{text}</div>
           <div className="p2">Sobota</div>
-          <div className="s1">2:00 - 10:00</div>
+          <div className="s1">{text2}</div>
           <div className="p2">Niedziela</div>
-          <div className="s1">Nieczynne</div>
+          <div className="s1">{text3}</div>
         </div>
       </div>
     </div>

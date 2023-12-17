@@ -21,6 +21,24 @@ export type Section = {
   product: Product[];
 };
 
+type Content = {
+  headerImage: string;
+  id: string;
+  text6: string;
+  text5: string;
+  text4: string;
+  text3: string;
+  text2: string;
+  text1: string;
+  stage: string;
+  sobota: string;
+  publishedAt: string;
+  poniedzialekPiatek: string;
+  niedziela: string;
+  mapLink: string;
+};
+
 export type Response = {
   sections: Section[];
+  contents: Content[];
 };

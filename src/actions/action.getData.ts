@@ -27,5 +27,21 @@ export const actionGetData = async () =>
                         }
                       }
                     }
+                     contents {
+                      headerImage
+                      id
+                      text6
+                      text5
+                      text4
+                      text3
+                      text2
+                      text1
+                      stage
+                      sobota
+                      publishedAt
+                      poniedzialekPiatek
+                      niedziela
+                      mapLink
+                    }
                 } `,
   );

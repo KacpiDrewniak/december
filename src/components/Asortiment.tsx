@@ -3,10 +3,23 @@ import { Product as ProductType, Section } from "../types/type";
 import maximise from "./../assets/maximize.svg";
 import { Button } from "./Button";
 import arrowUp from "./../assets/arrow-up.svg";
+import Modal from "react-modal";
+import arrowLeft from "./../assets/arrow-left.svg";
 type BadgeType = {
   label: string;
   isActive?: boolean;
   onClick: MouseEventHandler<HTMLButtonElement>;
+};
+
+const customStyles = {
+  content: {
+    padding: 0,
+    zIndex: 30,
+    top: "2%",
+    bottom: "2%",
+    right: "2%",
+    left: "2%",
+  },
 };
 
 const Badge = ({ label, onClick }: BadgeType) => {
@@ -21,10 +34,56 @@ const Badge = ({ label, onClick }: BadgeType) => {
 };
 
 const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div
-        className={`p-3 border rounded-xl border-${
+      <Modal isOpen={modalIsOpen} style={customStyles}>
+        <div className="flex flex-col h-full">
+          <div
+            className="flex-1 bg-center bg-cover"
+            style={{ backgroundImage: `url(${image.url})` }}
+          >
+            <Button
+              onClick={() => setIsOpen(false)}
+              style={{
+                top: 16,
+                left: 36,
+                position: "absolute",
+                width: 48,
+                height: 48,
+                padding: 0,
+              }}
+              variant="outline"
+            >
+              <img src={arrowLeft} />
+            </Button>
+          </div>
+          <div className="flex flex-col px-9 py-3 ">
+            <h5 className="h5">{title}</h5>
+            <hr className="bg-typography400 my-2" />
+            <div className="flex flex-row flex-wrap gap-2 justify-between ">
+              {productCard.map((p) => (
+                <div
+                  key={p.id}
+                  className={`p-2 basis-[140px] flex-col items-center bg-${
+                    isPromoted ? "green-100" : "typography300"
+                  } rounded-lg`}
+                >
+                  <div className="s1 text-center text-typography900">
+                    {p.price}
+                  </div>
+                  <div className="c2 text-center text-typography700">
+                    {p.title}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <button
+        onClick={() => setIsOpen(true)}
+        className={` hover:shadow-lg transition p-3 border rounded-xl border-${
           isPromoted ? "green-400" : "typography400"
         } flex flex-col`}
       >
@@ -56,7 +115,7 @@ const Product = ({ title, productCard, image, isPromoted }: ProductType) => {
             </div>
           ))}
         </div>
-      </div>
+      </button>
     </>
   );
 };
@@ -112,7 +171,7 @@ export const Asortiment = ({ data }: { data: Section[] }) => {
             el?.scrollIntoView({ behavior: "smooth", block: "center" });
           }}
           style={{ padding: 0 }}
-          classNames="!w-12 !h-12 fixed z-10 bottom-2 right-2"
+          classNames="!w-12 !h-12 fixed bottom-2 right-2"
         >
           <img src={arrowUp} />
         </Button>
